@@ -1,0 +1,16 @@
+PODS:
+  - TextFieldEffects (1.5.1)
+
+DEPENDENCIES:
+  - TextFieldEffects
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - TextFieldEffects
+
+SPEC CHECKSUMS:
+  TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
+
+PODFILE CHECKSUM: f418c7d503b6891e0b2e90ff15d625fb1f9b57db
+
+COCOAPODS: 1.6.1
