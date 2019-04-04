@@ -159,11 +159,11 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             }else{
             
             //Add a new guest
-            let newIndexPath = IndexPath(row: guests.count, section: 0)
+            /*let newIndexPath = IndexPath(row: guests.count, section: 0)
             currentGuestArray.append(guest)
             updatedArray.append(guest)
             arrivedGuests.append(guest)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)*/
             }
         }
     }
