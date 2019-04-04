@@ -127,9 +127,13 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
     private func updateSaveButtonState(){
         //Disable the Save Button if the text field is empty.
         let text = firstNameTextField.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
-        let text2 = lastNameTextField.text ?? ""
-        saveButton.isEnabled = !text2.isEmpty
+        if(text.isEmpty == true){
+            saveButton.isEnabled = false;
+        }else if(text.isEmpty == false){
+            saveButton.isEnabled = true;
+        }
+        /*let text2 = lastNameTextField.text ?? ""
+        saveButton.isEnabled = !text2.isEmpty*/
     }
 }
 
