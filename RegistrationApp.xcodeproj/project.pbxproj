@@ -10,6 +10,7 @@
 		50FC30DB2B2F29046703CE3D /* Pods_RegistrationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BD19AD06116C4E2CABED0C /* Pods_RegistrationApp.framework */; };
 		9961934A264736C498CDA37A /* Pods_RegistrationAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D113EFA678A222BFBB0A6F /* Pods_RegistrationAppTests.framework */; };
 		D0099C62225695BE00A6597D /* GuestList.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0099C61225695BE00A6597D /* GuestList.txt */; };
+		D078017E2264FFD800A7CAEC /* ArrivedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D078017D2264FFD800A7CAEC /* ArrivedHeader.swift */; };
 		D08CBA922214C44D0034832E /* AllSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08CBA912214C44D0034832E /* AllSetViewController.swift */; };
 		D08DCA752200B19800184838 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08DCA742200B19800184838 /* HomeScreenViewController.swift */; };
 		D09152482238492700549985 /* ArrivedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09152472238492700549985 /* ArrivedTableViewController.swift */; };
@@ -41,6 +42,7 @@
 		7E9B6E3DC191363BCB2E44C7 /* Pods-RegistrationAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegistrationAppTests.release.xcconfig"; path = "Target Support Files/Pods-RegistrationAppTests/Pods-RegistrationAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C2D113EFA678A222BFBB0A6F /* Pods_RegistrationAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RegistrationAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0099C61225695BE00A6597D /* GuestList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GuestList.txt; sourceTree = "<group>"; };
+		D078017D2264FFD800A7CAEC /* ArrivedHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivedHeader.swift; sourceTree = "<group>"; };
 		D08CBA912214C44D0034832E /* AllSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetViewController.swift; sourceTree = "<group>"; };
 		D08DCA742200B19800184838 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		D09152472238492700549985 /* ArrivedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivedTableViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				D0099C61225695BE00A6597D /* GuestList.txt */,
 				D0FC3D5021DFD1B5003CA749 /* Main.storyboard */,
+				D078017D2264FFD800A7CAEC /* ArrivedHeader.swift */,
 				D0F3E7C72244125A0007343C /* ArrivedGuestTableViewCell.swift */,
 				D09152472238492700549985 /* ArrivedTableViewController.swift */,
 				D0FC3D4C21DFD1B5003CA749 /* AppDelegate.swift */,
@@ -328,6 +331,7 @@
 			files = (
 				D0FC3D7121DFE82B003CA749 /* GuestTableViewController.swift in Sources */,
 				D0FC3D4F21DFD1B5003CA749 /* GuestViewController.swift in Sources */,
+				D078017E2264FFD800A7CAEC /* ArrivedHeader.swift in Sources */,
 				D0FC3D4D21DFD1B5003CA749 /* AppDelegate.swift in Sources */,
 				D08CBA922214C44D0034832E /* AllSetViewController.swift in Sources */,
 				D0FC3D6F21DFE4BB003CA749 /* GuestTableViewCell.swift in Sources */,
