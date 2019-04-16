@@ -8,9 +8,11 @@
 
 import UIKit
 import os.log
+protocol  Decoder{}
 
 class Guest: NSObject, NSCoding {
     
+   
     //MARK: Properties
     var constId: String
     var firstName: String
@@ -131,5 +133,6 @@ class Guest: NSObject, NSCoding {
         }
         
         self.init(constId: constId, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, guestOf: guestOf, number: number, balanceDue: balanceDue)
+    }
 }
-}
+

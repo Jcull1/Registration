@@ -34,6 +34,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         loadGuestFile()
         setUpSearchBar()
     }
+    
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,7 +71,9 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
 
         return cell
     }
-    
+    func loadURL(){
+        
+    }
     //SEARCH BAR
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         currentGuestArray = updatedArray
@@ -119,17 +122,6 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             //Setting select guest
             let selectedGuest = currentGuestArray[indexPath.row]
             guestDetailViewController.guest = selectedGuest
-            //arrayNum = indexPath.row
-            //Adding selected guest to arrived
-            //arrivedGuests += [selectedGuest]
-           //(saveGuests())
-            //Removing selected guest from current array and guest array
-            //currentGuestArray.remove(at: indexPath.row)
-            //guests.remove(at: indexPath.row)
-            //updatedArray = guests
-            //currentGuestArray = updatedArray
-           
-            
         default:
             fatalError("Unexpected Segue Indentifier; \(String(describing: segue.identifier))")
         }
@@ -147,17 +139,9 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
                 arrivedGuests.append(guest)
                 os_log("Added selected guest to arrived guests array", log: OSLog.default, type: .debug)
                 dump(arrivedGuests)
-                //tableView.reloadData()
-                //delete(element: guest)
-                //updatedArray.remove(at: arrayNum)
-                //currentGuestArray.remove(at: arrayNum)
-                //guests.remove(at: arrayNum)
-                //updatedArray = guests
-                //guests = updatedArray
                 currentGuestArray = updatedArray
                 tableView.reloadData()
             }else{
-            
             //Add a new guest
             /*let newIndexPath = IndexPath(row: guests.count, section: 0)
             currentGuestArray.append(guest)
@@ -172,7 +156,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
     private func loadGuestFile(){
         guard firstCompletionTime else{return}
             os_log("Load Guest List Function Called.", log: OSLog.default, type: .debug)
-            if let filepath = Bundle.main.path(forResource: "GuestList", ofType: "txt") {
+       /* if let filepath = Bundle.main.path(forResource: nil, ofType: "txt") {
                 do {
                     let content = try String(contentsOfFile: filepath, encoding: String.Encoding.utf8)
                     let readings = content.components(separatedBy: "\r") as [String]
@@ -194,9 +178,10 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             } else {
                 // example.txt not found!
                 os_log("File not found.", log: OSLog.default, type: .debug)
-            }
+            }*/
             firstCompletionTime = false
         }
+    
     
     private func setUpSearchBar(){
         searchBar.delegate = self
@@ -205,7 +190,6 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
    func delete(element: Guest) {
         dump(element)
         updatedArray = updatedArray.filter() { $0 != element }
-       // currentGuestArray = updatedArray
     }
     
     //Saving arrived Guests
@@ -218,6 +202,8 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             os_log("Failed to save guests...", log: OSLog.default, type: .error)
         }
     }
+    
+    
 }
 extension UIView {
     

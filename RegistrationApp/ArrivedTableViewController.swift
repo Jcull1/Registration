@@ -45,15 +45,6 @@ class ArrivedTableViewController: UITableViewController, MFMailComposeViewContro
                     UIActivity.ActivityType.copyToPasteboard,
                     UIActivity.ActivityType.addToReadingList
                 ]
-                /*if MFMailComposeViewController.canSendMail() {
-                    let emailController = MFMailComposeViewController()
-                    emailController.mailComposeDelegate = self
-                    emailController.setToRecipients([])
-                    emailController.setSubject("Arrived Guest List data export")
-                    emailController.setMessageBody("Hi,\n\nThe .csv data export is attached\n\n\nSent from the Registration app.", isHTML: false)
-                    
-                    emailController.addAttachmentData(NSData(contentsOf: path!)! as Data, mimeType: "text/csv", fileName: "ArrivedGuestList.csv")
-                }*/
             present(vc, animated: true)
             if let popOver = vc.popoverPresentationController {
                 popOver.sourceView = self.view
@@ -62,12 +53,9 @@ class ArrivedTableViewController: UITableViewController, MFMailComposeViewContro
                 os_log("Failed", log: OSLog.default, type: .debug)
             }
         }
-            /*func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-                controller.dismiss(animated: true, completion: nil)
-    }*/
     }
-    // MARK: - Table view data source
     
+    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             arrivedGuests.remove(at: indexPath.row)
