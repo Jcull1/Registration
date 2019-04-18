@@ -493,6 +493,7 @@
 			baseConfigurationReference = DF7B47C771593FB8B7BE3E54 /* Pods-RegistrationApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V533RRLSDM;
 				INFOPLIST_FILE = RegistrationApp/Info.plist;
@@ -500,7 +501,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RegistrationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jcull.RegistrationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -512,6 +513,7 @@
 			baseConfigurationReference = DFC98823BAE3BB45A64584B1 /* Pods-RegistrationApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V533RRLSDM;
 				INFOPLIST_FILE = RegistrationApp/Info.plist;
@@ -519,7 +521,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RegistrationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jcull.RegistrationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
