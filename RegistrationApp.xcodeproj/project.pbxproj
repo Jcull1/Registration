@@ -34,6 +34,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D0780195226F5A2F00A7CAEC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		39BD19AD06116C4E2CABED0C /* Pods_RegistrationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RegistrationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3D47A5EA7CE705853956C2 /* Pods-RegistrationAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegistrationAppTests.debug.xcconfig"; path = "Target Support Files/Pods-RegistrationAppTests/Pods-RegistrationAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -42,6 +55,7 @@
 		D08CBA912214C44D0034832E /* AllSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetViewController.swift; sourceTree = "<group>"; };
 		D08DCA742200B19800184838 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		D09152472238492700549985 /* ArrivedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivedTableViewController.swift; sourceTree = "<group>"; };
+		D0DD0E9E226F61BF00FBAF38 /* RegistrationApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RegistrationApp.entitlements; sourceTree = "<group>"; };
 		D0F3E7C72244125A0007343C /* ArrivedGuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivedGuestTableViewCell.swift; sourceTree = "<group>"; };
 		D0FC3D4921DFD1B5003CA749 /* RegistrationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegistrationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FC3D4C21DFD1B5003CA749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +137,7 @@
 		D0FC3D4B21DFD1B5003CA749 /* RegistrationApp */ = {
 			isa = PBXGroup;
 			children = (
+				D0DD0E9E226F61BF00FBAF38 /* RegistrationApp.entitlements */,
 				D0FC3D5021DFD1B5003CA749 /* Main.storyboard */,
 				D0F3E7C72244125A0007343C /* ArrivedGuestTableViewCell.swift */,
 				D09152472238492700549985 /* ArrivedTableViewController.swift */,
@@ -161,6 +176,7 @@
 				D0FC3D4621DFD1B5003CA749 /* Frameworks */,
 				D0FC3D4721DFD1B5003CA749 /* Resources */,
 				B8EAF7F6C894609239F873C2 /* [CP] Embed Pods Frameworks */,
+				D0780195226F5A2F00A7CAEC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -202,6 +218,11 @@
 				TargetAttributes = {
 					D0FC3D4821DFD1B5003CA749 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					D0FC3D5C21DFD1B6003CA749 = {
 						CreatedOnToolsVersion = 10.1;

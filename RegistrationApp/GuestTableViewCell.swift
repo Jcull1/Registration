@@ -21,6 +21,8 @@ class GuestTableViewCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var frontView: UIView!
     @IBOutlet weak var SidePanel: UIView!
+    @IBOutlet weak var Top: UIView!
+    @IBOutlet weak var Bot: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

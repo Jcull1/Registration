@@ -67,8 +67,15 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         cell.cellPhoneNumberLabel.text = currentGuestArray[indexPath.row].cellPhone
         cell.numberOfGuestLabel.text = currentGuestArray[indexPath.row].guestOf
         cell.numberLabel.text = currentGuestArray[indexPath.row].number
+        if(cell.numberLabel.text != "none"){
+            cell.Top.isHidden = false;
+            cell.numberLabel.isHidden = false;
+        }
         cell.balanceDueLabel.text = currentGuestArray[indexPath.row].balanceDue
-
+        if(cell.balanceDueLabel.text != "none"){
+            cell.Bot.isHidden = false;
+            cell.balanceDueLabel.isHidden = false;
+        }
         return cell
     }
     func loadURL(){
@@ -83,8 +90,8 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             return
         }
         currentGuestArray = guests.filter({ guest -> Bool in
-        guest.lastName.contains(searchText)
-        })
+            guest.lastName.contains(searchText) || guest.guestOf.contains(searchText)
+            })
         tableView.reloadData()
     }
 
