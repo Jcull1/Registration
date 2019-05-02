@@ -14,7 +14,7 @@
         <scene sceneID="wPZ-pD-XTM">
             <objects>
                 <tableViewController id="UhF-mX-bZD" customClass="GuestTableViewController" customModule="RegistrationApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="151" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="le5-jV-2RD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="151" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="le5-jV-2RD">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -28,7 +28,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GuestTableViewCell" rowHeight="151" id="caY-Kk-CUy" customClass="GuestTableViewCell" customModule="RegistrationApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="GuestTableViewCell" rowHeight="151" id="caY-Kk-CUy" customClass="GuestTableViewCell" customModule="RegistrationApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="768" height="151"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caY-Kk-CUy" id="Uc2-OQ-KwF">
@@ -209,7 +209,11 @@
                                 <action selector="cancelToHome:" destination="UhF-mX-bZD" id="bsn-az-fBM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="sYf-x0-fH6"/>
+                        <barButtonItem key="rightBarButtonItem" title="Select Party" id="sYf-x0-fH6">
+                            <connections>
+                                <action selector="registerMultiple:" destination="UhF-mX-bZD" id="U8D-Uo-sw0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="cYa-C1-Cu1" id="GX7-eO-Z5P"/>

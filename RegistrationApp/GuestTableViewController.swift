@@ -31,6 +31,9 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
     var arrayNum = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.editButtonItem.title = "Select Party"
+        dump(self.isEditing)
         loadGuestFile()
         setUpSearchBar()
     }
@@ -40,7 +43,25 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return !self.isEditing
+    }
+    override func setEditing (_ editing:Bool, animated:Bool)
+    {
+        super.setEditing(editing,animated:animated)
+        if(self.isEditing)
+        {
+
+            self.editButtonItem.title = "Register"
+        }else
+        {
+ 
+            self.editButtonItem.title = "Select Party"
+        }
+    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        return true
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return currentGuestArray.count
     }
@@ -107,6 +128,10 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
     // MARK: - Navigation
     @IBAction func cancelToHome(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func registerMultiple(_ sender: UIBarButtonItem){
+        //setEditing(true, animated: true)
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
