@@ -22,20 +22,28 @@ var updatedArray = [Guest]()
 var arrivedGuests = [Guest]()
 var orignalGuestArray = [Guest]()
 var searchController: UISearchController!
+var canSegue = true
+var value = [Guest]()
+var rowSelection = false;
 
 class GuestTableViewController: UITableViewController , UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var registerButton: UIButton!
     //MARK: Properties
     
     var arrayNum = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = true
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.editButtonItem.title = "Select Party"
-        dump(self.isEditing)
         loadGuestFile()
+        navigationItem.titleView = searchBar
+        headerView.isHidden = true
         setUpSearchBar()
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
 
@@ -43,19 +51,36 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return !self.isEditing
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        registerButton.isEnabled = true
     }
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.indexPathsForSelectedRows == nil{
+        registerButton.isEnabled = false
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "ShowDetail"{
+            if self.isEditing == false{
+                return true
+            }
+        }
+        return false
+        }
+    
     override func setEditing (_ editing:Bool, animated:Bool)
     {
         super.setEditing(editing,animated:animated)
+       
         if(self.isEditing)
         {
-
-            self.editButtonItem.title = "Register"
+             headerView.isHidden = false
+            self.editButtonItem.title = "Cancel"
         }else
         {
- 
+            headerView.isHidden = true
             self.editButtonItem.title = "Select Party"
         }
     }
@@ -191,6 +216,20 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             }
         }
     }
+    
+    @IBAction func RegisterMultipleGuests(_ sender: Any) {
+        let selected_indexPaths = tableView.indexPathsForSelectedRows
+        for indexPath in selected_indexPaths!{
+            arrivedGuests.append(currentGuestArray[indexPath.row])
+            dump(indexPath)
+        }
+        dump(currentGuestArray)
+        tableView.reloadData()
+        isEditing = false;
+        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "Home") as! HomeScreenViewController
+        homeScreen.modalTransitionStyle = .crossDissolve
+        self.navigationController?.pushViewController(homeScreen, animated: true)
+        }
 
     //MARK Private Methods
     private func loadGuestFile(){
@@ -226,7 +265,6 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
     private func setUpSearchBar(){
         searchBar.delegate = self
     }
-    
    func delete(element: Guest) {
         dump(element)
         updatedArray = updatedArray.filter() { $0 != element }

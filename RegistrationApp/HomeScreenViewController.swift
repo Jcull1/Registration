@@ -10,12 +10,12 @@ import UIKit
 import os.log
 
 class HomeScreenViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+   
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
 
     
     // MARK: - Navigation
