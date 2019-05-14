@@ -41,9 +41,10 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         self.editButtonItem.title = "Select Party"
         loadGuestFile()
         navigationItem.titleView = searchBar
-        headerView.isHidden = true
+        //headerView.isHidden = true
         setUpSearchBar()
         tableView.tableFooterView = UIView(frame: .zero)
+        
     }
     
 
@@ -76,11 +77,13 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
        
         if(self.isEditing)
         {
-             headerView.isHidden = false
+            headerView.backgroundColor = #colorLiteral(red: 0.6738977432, green: 0.6871618032, blue: 0.3302460313, alpha: 1)
+             //headerView.isHidden = false
             self.editButtonItem.title = "Cancel"
         }else
         {
-            headerView.isHidden = true
+            headerView.backgroundColor = #colorLiteral(red: 0.4431372549, green: 0.4352941176, blue: 0.4156862745, alpha: 1)
+            //headerView.isHidden = true
             self.editButtonItem.title = "Select Party"
         }
     }
@@ -221,9 +224,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         let selected_indexPaths = tableView.indexPathsForSelectedRows
         for indexPath in selected_indexPaths!{
             arrivedGuests.append(currentGuestArray[indexPath.row])
-            dump(indexPath)
         }
-        dump(currentGuestArray)
         tableView.reloadData()
         isEditing = false;
         let homeScreen = storyboard?.instantiateViewController(withIdentifier: "Home") as! HomeScreenViewController
