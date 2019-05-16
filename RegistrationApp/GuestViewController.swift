@@ -54,7 +54,7 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
             cellPhoneTextField.text = guest.cellPhone
             numberOfGuestTextField.text = guest.guestOf
             constIdTextField.text = guest.constId
-             numberTextField.text = guest.number
+            numberTextField.text = guest.number
             BalanceDueTextField.text = guest.balanceDue
             if(guest.number == "none"){
                 numberTextField.isHidden = true
@@ -71,7 +71,18 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
         updateSaveButtonState()
     }
     //MARK: UITextFieldDelegate
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if !text.isEmpty{
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
+        
+        return true
+    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
         saveButton.isEnabled = false
@@ -126,12 +137,12 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
     //MARK: Private Methods
     private func updateSaveButtonState(){
         //Disable the Save Button if the text field is empty.
-        let text = firstNameTextField.text ?? ""
+        /*let text = firstNameTextField.text ?? ""
         if(text.isEmpty == true){
             saveButton.isEnabled = false;
         }else if(text.isEmpty == false){
             saveButton.isEnabled = true;
-        }
+        }*/
         /*let text2 = lastNameTextField.text ?? ""
         saveButton.isEnabled = !text2.isEmpty*/
     }

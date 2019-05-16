@@ -44,7 +44,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         //headerView.isHidden = true
         setUpSearchBar()
         tableView.tableFooterView = UIView(frame: .zero)
-        
+        //registerButton.isEnabled = false;
     }
     
 
@@ -117,21 +117,21 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         cell.numberOfGuestLabel.text = currentGuestArray[indexPath.row].guestOf
         cell.numberLabel.text = currentGuestArray[indexPath.row].number
         if(cell.numberLabel.text == "none"){
-            cell.Top.isHidden = true;
+            cell.Top.isHidden = true
             cell.numberLabel.isHidden = true;
         }else{
-            cell.Top.isHidden = false;
-            cell.numberLabel.isHidden = false;
+            cell.Top.isHidden = false
+            cell.numberLabel.isHidden = false
         }
         cell.balanceDueLabel.text = currentGuestArray[indexPath.row].balanceDue
         if(cell.balanceDueLabel.text == "none"){
-            cell.Bot.isHidden = true;
+            cell.Bot.isHidden = true
             cell.balanceDueLabel.isHidden = true;
         }else{
             
-            cell.Bot.isHidden = false;
+            cell.Bot.isHidden = false
             
-            cell.balanceDueLabel.isHidden = false;
+            cell.balanceDueLabel.isHidden = false
         }
         return cell
     }
@@ -147,7 +147,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             return
         }
         currentGuestArray = guests.filter({ guest -> Bool in
-            guest.lastName.contains(searchText) || guest.guestOf.contains(searchText)
+            guest.lastName.contains(searchText) || guest.guestOf.contains(searchText) || guest.number.contains(searchText)
             })
         tableView.reloadData()
     }
@@ -202,7 +202,8 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             if let selectedIndexPath = tableView.indexPathForSelectedRow{
                 //Update existing guest
                 os_log("Editing a guest.", log: OSLog.default, type: .debug)
-                updatedArray[selectedIndexPath.row] = guest
+                registerButton.isEnabled = false;
+                currentGuestArray[selectedIndexPath.row] = guest
                 //Adding selected guest to arrived
                 arrivedGuests.append(guest)
                 os_log("Added selected guest to arrived guests array", log: OSLog.default, type: .debug)
@@ -227,6 +228,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         }
         tableView.reloadData()
         isEditing = false;
+        registerButton.isEnabled = false;
         let homeScreen = storyboard?.instantiateViewController(withIdentifier: "Home") as! HomeScreenViewController
         homeScreen.modalTransitionStyle = .crossDissolve
         self.navigationController?.pushViewController(homeScreen, animated: true)
