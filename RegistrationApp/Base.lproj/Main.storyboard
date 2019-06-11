@@ -413,7 +413,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Register" id="x7J-qn-rgd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="ZMa-1o-LPD" kind="unwind" unwindAction="unwindToGuestListWithSender:" id="63V-ag-TkE"/>
+                                <action selector="SegueToAllSetScene:" destination="ZMa-1o-LPD" id="hu9-4o-dm9"/>
+                                <segue destination="ZMa-1o-LPD" kind="unwind" unwindAction="unwindToGuestListWithSender:" id="28c-R7-Ees"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -434,6 +435,38 @@
                 <exit id="ZMa-1o-LPD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4410.15625" y="15.234374999999998"/>
+        </scene>
+        <!--All Set View Controller-->
+        <scene sceneID="iWB-UO-1Zw">
+            <objects>
+                <viewController storyboardIdentifier="All Set" id="F2A-lJ-FAo" customClass="AllSetViewController" customModule="RegistrationApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yxQ-0X-ihr">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You're all set, enjoy the event!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8E-7O-uFV">
+                                <rect key="frame" x="103" y="162" width="563" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="GuestTitle">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="60"/>
+                                <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="E7u-J9-Vdg">
+                                <rect key="frame" x="139" y="368" width="491" height="465"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83921568629999999" green="0.81568627449999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Ew5-gL-V07"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LNc-FR-17x"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WXO-XS-jBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5243.75" y="14.648437499999998"/>
         </scene>
         <!--Home-->
         <scene sceneID="WVN-aX-zZD">
@@ -470,7 +503,7 @@
                                     <constraint firstAttribute="height" constant="133" id="ElZ-7b-543"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="46"/>
-                                <state key="normal" title="Register" backgroundImage="ButtonBackground">
+                                <state key="normal" title="Check In" backgroundImage="ButtonBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -829,9 +862,29 @@
             </objects>
             <point key="canvasLocation" x="866.40625" y="15.234374999999998"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Rl-ah-7w7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qao-X7-foP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e9x-Dt-MlW">
+                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.4431372549" green="0.43529411759999997" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="F2A-lJ-FAo" kind="relationship" relationship="rootViewController" id="hwj-4x-tAy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fvy-F6-LwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5155" y="1048"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ButtonBackground" width="1782" height="522"/>
+        <image name="Image" width="384" height="384"/>
         <image name="SHU_Logo" width="1200" height="628"/>
     </resources>
     <inferredMetricsTieBreakers>

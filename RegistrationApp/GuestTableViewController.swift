@@ -147,7 +147,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             return
         }
         currentGuestArray = guests.filter({ guest -> Bool in
-            guest.lastName.contains(searchText) || guest.guestOf.contains(searchText) || guest.number.contains(searchText)
+            guest.lastName.lowercased().contains(searchText.lowercased()) || guest.guestOf.lowercased().contains(searchText.lowercased()) || guest.number.lowercased().contains(searchText.lowercased())
             })
         tableView.reloadData()
     }
@@ -158,9 +158,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func registerMultiple(_ sender: UIBarButtonItem){
-        //setEditing(true, animated: true)
-    }
+    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -195,7 +193,8 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         }
     }
     
-//MARK: Actions
+//MARK: Actionn
+   
     @IBAction func unwindToGuestList(sender: UIStoryboardSegue){
         if let sourceViewController = sender.source as?
             GuestViewController, let guest = sourceViewController.guest{
@@ -219,6 +218,8 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             tableView.insertRows(at: [newIndexPath], with: .automatic)*/
             }
         }
+        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "All Set") as! AllSetViewController
+       // self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func RegisterMultipleGuests(_ sender: Any) {
