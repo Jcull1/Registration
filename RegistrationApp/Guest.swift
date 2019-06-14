@@ -22,6 +22,7 @@ class Guest: NSObject, NSCoding {
     var guestOf: String
     var number: String
     var balanceDue: String
+    var checkIn: String
     
     //MARK: Archiving Paths
     
@@ -39,12 +40,13 @@ class Guest: NSObject, NSCoding {
         static let guestOf = "guestOf"
         static let number = "number"
         static let balanceDue = "balanceDue"
+        static let checkIn = "checkIn"
     }
     //MARK: Initialization
     
     //Initialization should fail if there is an empty value.
     
-    init?(constId: String, firstName: String, lastName: String, email: String, cellPhone: String, guestOf: String, number: String, balanceDue: String) {
+    init?(constId: String, firstName: String, lastName: String, email: String, cellPhone: String, guestOf: String, number: String, balanceDue: String, checkIn: String) {
         
         //Nothing should be empty
         guard !constId.isEmpty else{
@@ -81,6 +83,7 @@ class Guest: NSObject, NSCoding {
         self.guestOf = guestOf
         self.number = number
         self.balanceDue = balanceDue
+        self.checkIn = checkIn
     }
     
     //MARK: NSCoding
@@ -93,6 +96,7 @@ class Guest: NSObject, NSCoding {
         aCoder.encode(guestOf, forKey: PropertyKey.guestOf)
         aCoder.encode(number, forKey: PropertyKey.number)
         aCoder.encode(balanceDue, forKey: PropertyKey.balanceDue)
+        aCoder.encode(checkIn, forKey: PropertyKey.checkIn)
     }
     
     required convenience init?(coder aDecoder: NSCoder){
@@ -131,8 +135,12 @@ class Guest: NSObject, NSCoding {
             os_log("Unable to decide the balanceDue for a Guest Object", log: OSLog.default, type: .debug)
             return nil
         }
+        guard let checkIn = aDecoder.decodeObject(forKey: PropertyKey.checkIn) as? String else{
+            os_log("Unable to decide the checkIn for a Guest Object", log: OSLog.default, type: .debug)
+            return nil
+        }
         
-        self.init(constId: constId, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, guestOf: guestOf, number: number, balanceDue: balanceDue)
+        self.init(constId: constId, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, guestOf: guestOf, number: number, balanceDue: balanceDue,checkIn: checkIn)
     }
 }
 

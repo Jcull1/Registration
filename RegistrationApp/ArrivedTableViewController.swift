@@ -10,18 +10,36 @@ import UIKit
 import os.log
 import MessageUI
 
+//Switch state that coincides with Logo
+var switchState = true
+
 class ArrivedTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+    
+    //Outlets
     @IBOutlet weak var ArrivedCounter: UILabel!
     @IBOutlet weak var TotalGuestCounter: UILabel!
+    @IBOutlet weak var logoSwitcher: UISwitch!
     
+    //Switch state changed function
+    @IBAction func switchLogo(_ sender: UISwitch) {
+        if(sender.isOn == true){
+            switchState = true
+        }else{
+            switchState = false
+        }
+    }
     
+    //When ArrivedTableViewController is loaded, this initializes it's componenets.
     override func viewDidLoad() {
         super.viewDidLoad()
         TotalGuestCounter.text = String(guests.count)
         ArrivedCounter.text = String(arrivedGuests.count)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(export))
+        logoSwitcher.isOn = switchState
+        
     }
 
+    //This function deals with exporting a arrived guest list as a cvs file.
     @objc func export(_ sender: UIBarButtonItem){
     os_log("Export Button pressed", log: OSLog.default, type: .debug)
         let fileName = "ArrivedGuestList.csv"
@@ -55,7 +73,7 @@ class ArrivedTableViewController: UITableViewController, MFMailComposeViewContro
         }
     }
     
-    // MARK: - Table view data source
+    //Table view data source. Allows for deletion
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             arrivedGuests.remove(at: indexPath.row)
@@ -75,6 +93,7 @@ class ArrivedTableViewController: UITableViewController, MFMailComposeViewContro
         return arrivedGuests.count
     }
 
+    //Initializes the values in each guest cell with the guest values saved in the arrivedGuests array.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //Table view cells are reused and should be dequeued using a cell indentifier
@@ -101,8 +120,7 @@ class ArrivedTableViewController: UITableViewController, MFMailComposeViewContro
      }
 }
 
-//Actions
-//Round Corners
+//Round Corners for cells.
 extension UIView {
     
     func roundCorner(_ corners: UIRectCorner, radius: CGFloat) {
@@ -113,50 +131,3 @@ extension UIView {
 
     }
 }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-
-    // Override to support editing the table view.
-
-
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */

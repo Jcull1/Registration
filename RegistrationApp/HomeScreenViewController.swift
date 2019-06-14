@@ -10,16 +10,28 @@ import UIKit
 import os.log
 
 class HomeScreenViewController: UIViewController {
-   
+    @IBOutlet weak var ShuLogoButton: UIButton!
+    @IBOutlet weak var HorizonLogoButton: UIButton!
     
+    //Called when view is about to appear.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        changeLogo()
     }
 
+    //Deals with logo change.
+    private func changeLogo(){
+        if(switchState == true){
+            ShuLogoButton.isHidden = false
+            HorizonLogoButton.isHidden = true
+        }else{
+            ShuLogoButton.isHidden = true
+            HorizonLogoButton.isHidden = false
+        }
+    }
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -39,8 +51,5 @@ class HomeScreenViewController: UIViewController {
         default:
             fatalError("Unexpected Segue Indentifier; \(String(describing: segue.identifier))")
         }
-       
     }
-    
-
 }

@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 for i in 1..<(readings.count){
                     let data = readings[i].components(separatedBy:"\t")
                     
-                    guests.append(Guest(constId: "\(data[0])", firstName: "\(data[1])", lastName: "\(data[2])", email: "\(data[3])", cellPhone: "\(data[4])", guestOf: "\(data[5])", number: "\(data[6])", balanceDue: "\(data[7])")!)
+                    guests.append(Guest(constId: "\(data[0])", firstName: "\(data[1])", lastName: "\(data[2])", email: "\(data[3])", cellPhone: "\(data[4])", guestOf: "\(data[5])", number: "\(data[6])", balanceDue: "\(data[7])", checkIn: "\(data[8])")!)
                 }
                 currentGuestArray+=guests
                 updatedArray+=guests

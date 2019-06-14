@@ -107,6 +107,12 @@
                                                                     <color key="textColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckInPlaceholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ah-IQ-WeY">
+                                                                    <rect key="frame" x="0.0" y="82" width="204" height="0.0"/>
+                                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
+                                                                    <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                         </stackView>
                                                         <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCo-Xc-zDn" userLabel="Top">
@@ -237,6 +243,7 @@
                                     <outlet property="backView" destination="hsb-oJ-Tds" id="gCS-og-LUo"/>
                                     <outlet property="balanceDueLabel" destination="Mk7-zF-UAs" id="3ox-mf-E9N"/>
                                     <outlet property="cellPhoneNumberLabel" destination="eaI-Mh-JCA" id="rnW-Ms-qY7"/>
+                                    <outlet property="checkInLabel" destination="6ah-IQ-WeY" id="jXW-eD-DPR"/>
                                     <outlet property="constIdLabel" destination="VSN-9x-bfj" id="p6V-im-ind"/>
                                     <outlet property="emailLabel" destination="83T-93-zJR" id="J8c-Xf-4Yh"/>
                                     <outlet property="firstNameLabel" destination="ApT-kg-gKn" id="scW-GL-MDC"/>
@@ -379,6 +386,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Number of Guest" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUg-Bm-9nw" userLabel="CheckIn Text Field" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="0.0" y="560" width="539.5" height="0.0"/>
+                                        <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.4431372549" green="0.43529411759999997" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Zyu-7I-wcA" secondAttribute="trailing" id="3xB-Jp-QcR"/>
@@ -422,6 +440,7 @@
                         <outlet property="BalanceDueTextField" destination="kFy-hI-fsT" id="C9V-ad-lmd"/>
                         <outlet property="GuestTitle" destination="r2X-oV-Oxf" id="aho-zG-Phb"/>
                         <outlet property="cellPhoneTextField" destination="EbA-sk-7ts" id="pKg-Uy-ewZ"/>
+                        <outlet property="checkInTextField" destination="bUg-Bm-9nw" id="lHA-n9-1ux"/>
                         <outlet property="constIdTextField" destination="XfI-gY-hvD" id="rlp-4o-2BN"/>
                         <outlet property="emailTextField" destination="3oG-lT-BQT" id="SUd-yy-yz1"/>
                         <outlet property="firstNameTextField" destination="iRO-Ul-450" id="Ran-AL-xKx"/>
@@ -479,7 +498,7 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SHU_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="3IF-w4-YSG">
                                 <rect key="frame" x="20" y="106" width="728" height="388"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLJ-YY-S5c">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLJ-YY-S5c" userLabel="SHUButton">
                                 <rect key="frame" x="20" y="106" width="728" height="388"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="SHU_Logo"/>
@@ -510,6 +529,15 @@
                                     <segue destination="gMB-fh-DsW" kind="presentation" identifier="Register" id="WHa-Dv-e7r"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQq-ic-8Ou" userLabel="HorizonButton">
+                                <rect key="frame" x="114" y="156" width="541" height="288"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" backgroundImage="HorizonLogo"/>
+                                <connections>
+                                    <segue destination="AWl-1P-XEJ" kind="presentation" identifier="ArrivedGuests" id="LH7-Cz-7c1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83921568629999999" green="0.81568627449999997" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -532,6 +560,10 @@
                         <viewLayoutGuide key="safeArea" id="Yt9-uE-yUC"/>
                     </view>
                     <navigationItem key="navigationItem" id="2A1-hO-YOn"/>
+                    <connections>
+                        <outlet property="HorizonLogoButton" destination="IQq-ic-8Ou" id="MrJ-XB-ELT"/>
+                        <outlet property="ShuLogoButton" destination="pLJ-YY-S5c" id="CTT-Ue-OgR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOs-OF-8yQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -637,6 +669,13 @@
                                         <constraint firstItem="rSQ-Vd-Tkx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7yg-0r-Wyj" secondAttribute="trailing" constant="8" symbolic="YES" id="m0w-ER-chz"/>
                                     </constraints>
                                 </view>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlH-rc-v9y" userLabel="LogoSwitch">
+                                    <rect key="frame" x="8" y="28" width="49" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="switchLogo:" destination="FfH-QZ-ruj" eventType="valueChanged" id="Htf-SY-vNp"/>
+                                    </connections>
+                                </switch>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -818,6 +857,7 @@
                     <connections>
                         <outlet property="ArrivedCounter" destination="FBd-ea-LbR" id="0cG-WF-Rrv"/>
                         <outlet property="TotalGuestCounter" destination="rSQ-Vd-Tkx" id="9GO-S6-bZ5"/>
+                        <outlet property="logoSwitcher" destination="hlH-rc-v9y" id="SUk-31-w1K"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNV-q2-kUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -884,10 +924,12 @@
     </scenes>
     <resources>
         <image name="ButtonBackground" width="1782" height="522"/>
+        <image name="HorizonLogo" width="188" height="99"/>
         <image name="Image" width="384" height="384"/>
         <image name="SHU_Logo" width="1200" height="628"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="LH7-Cz-7c1"/>
         <segue reference="e1M-6V-Hie"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

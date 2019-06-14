@@ -39,12 +39,9 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         tableView.allowsSelection = true
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.editButtonItem.title = "Select Party"
-        loadGuestFile()
         navigationItem.titleView = searchBar
-        //headerView.isHidden = true
         setUpSearchBar()
         tableView.tableFooterView = UIView(frame: .zero)
-        //registerButton.isEnabled = false;
     }
     
 
@@ -116,6 +113,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         cell.cellPhoneNumberLabel.text = currentGuestArray[indexPath.row].cellPhone
         cell.numberOfGuestLabel.text = currentGuestArray[indexPath.row].guestOf
         cell.numberLabel.text = currentGuestArray[indexPath.row].number
+        cell.checkInLabel.text = currentGuestArray[indexPath.row].checkIn
         if(cell.numberLabel.text == "none"){
             cell.Top.isHidden = true
             cell.numberLabel.isHidden = true;
@@ -132,6 +130,9 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             cell.Bot.isHidden = false
             
             cell.balanceDueLabel.isHidden = false
+        }
+        if(cell.checkInLabel.text == "True"){
+            cell.isHidden = true;
         }
         return cell
     }
@@ -204,6 +205,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
                 registerButton.isEnabled = false;
                 currentGuestArray[selectedIndexPath.row] = guest
                 //Adding selected guest to arrived
+                guest.checkIn = "True"
                 arrivedGuests.append(guest)
                 os_log("Added selected guest to arrived guests array", log: OSLog.default, type: .debug)
                 dump(arrivedGuests)
@@ -219,7 +221,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             }
         }
         //let vc = self.storyboard?.instantiateViewController(withIdentifier: "All Set") as! AllSetViewController
-       // self.present(vc, animated: true, completion: nil)
+       //self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func RegisterMultipleGuests(_ sender: Any) {
@@ -234,44 +236,9 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         homeScreen.modalTransitionStyle = .crossDissolve
         self.navigationController?.pushViewController(homeScreen, animated: true)
         }
-
-    //MARK Private Methods
-    private func loadGuestFile(){
-        guard firstCompletionTime else{return}
-            os_log("Load Guest List Function Called.", log: OSLog.default, type: .debug)
-       /* if let filepath = Bundle.main.path(forResource: nil, ofType: "txt") {
-                do {
-                    let content = try String(contentsOfFile: filepath, encoding: String.Encoding.utf8)
-                    let readings = content.components(separatedBy: "\r") as [String]
-                    
-                    for i in 1..<(readings.count - 1){
-                        let data = readings[i].components(separatedBy:"\t")
-                        
-                        guests.append(Guest(constId: "\(data[0])", firstName: "\(data[1])", lastName: "\(data[2])", email: "\(data[3])", cellPhone: "\(data[4])", guestOf: "\(data[5])", number: "\(data[6])", balanceDue: "\(data[7])")!)
-                    }
-                    currentGuestArray+=guests
-                    //dump(guests)
-                    updatedArray+=guests
-                    orignalGuestArray += guests
-                    
-                } catch {
-                    // contents could not be loaded
-                    os_log("Contents could not be loaded.", log: OSLog.default, type: .debug)
-                }
-            } else {
-                // example.txt not found!
-                os_log("File not found.", log: OSLog.default, type: .debug)
-            }*/
-            firstCompletionTime = false
-        }
-    
     
     private func setUpSearchBar(){
         searchBar.delegate = self
-    }
-   func delete(element: Guest) {
-        dump(element)
-        updatedArray = updatedArray.filter() { $0 != element }
     }
     
     //Saving arrived Guests
@@ -296,69 +263,3 @@ extension UIView {
         self.layer.mask = mask
     }
 }
-
-    
-
-
-//-----------------Grave Yard-----------------
-/*
- private func loadSampleGuests(){
- guests.append(Guest(firstName: "Justin", lastName: "Cullen", email: "jcullyt1@gmail.com", cellPhoneNumber: "203-530-2500", numberOfGuest: "1")!)
- guests.append(Guest(firstName: "John", lastName: "Petillo", email: "JohnPetillo@gmail.com", cellPhoneNumber: "1234567890", numberOfGuest: "1")!)
- guests.append(Guest(firstName: "Ludwig", lastName: "Spinelli", email: "LudwigSpinelli@gmail.com", cellPhoneNumber: "1234567890", numberOfGuest: "1")!)
- currentGuestArray += guests
- os_log("loadSampleGuests called.", log: OSLog.default, type: .debug)
- }
-
- os_log("test", log: OSLog.default, type: .debug)
- if let selectedIndexPath = tableView.indexPathForSelectedRow{
- //Update existing guest
- currentGuestArray[selectedIndexPath.row] = guest
- os_log("existing guest update called", log: OSLog.default, type: .debug)
- tableView.reloadRows(at: [selectedIndexPath], with: .none)
- }
- else{
- 
- load any saved guests
- if let savedGuests = loadGuests(){
- currentGuestArray += savedGuests
- }
- 
- private func saveGuests(){
- let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(currentGuestArray, toFile: Guest.ArchiveURL.path)
- 
- if isSuccessfulSave {
- os_log("Guests successfully saved.", log: OSLog.default, type: .debug)
- } else {
- os_log("Failed to save guests...", log: OSLog.default, type: .error)
- }
- }
- 
- private func loadGuests() -> [Guest]? {
- os_log("load guests called", log: OSLog.default, type: .debug)
- return NSKeyedUnarchiver.unarchiveObject(withFile: Guest.ArchiveURL.path) as? [Guest]    }
- }
- //MARK: Actions
- /*@IBAction func unwindToGuestList(sender: UIStoryboardSegue){
- if let sourceViewController = sender.source as?
- GuestViewController, let guest = sourceViewController.guest{
- os_log("test", log: OSLog.default, type: .debug)
- if let selectedIndexPath = tableView.indexPathForSelectedRow{
- //Update existing guest
- currentGuestArray[selectedIndexPath.row] = guest
- os_log("existing guest update called", log: OSLog.default, type: .debug)
- tableView.reloadRows(at: [selectedIndexPath], with: .none)
- }
- else{
- //Add a new guest
- let newIndexPath = IndexPath(row: currentGuestArray.count, section: 0)
- 
- currentGuestArray.append(guest)
- tableView.insertRows(at: [newIndexPath], with: .automatic)
- }
- guestArrived()
- //saveGuests()
- }
- }*/
- */
-

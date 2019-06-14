@@ -22,7 +22,8 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var numberOfGuestTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var GuestTitle: UILabel!
- 
+    @IBOutlet weak var checkInTextField: UITextField!
+    
  /*
  This value is either passed by "GuestTableViewController" in 'prepare(for:sender:)'
  or contructed as part of adding a new meal.
@@ -42,6 +43,8 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
         numberOfGuestTextField.delegate = self
         numberTextField.delegate = self
         BalanceDueTextField.delegate = self
+        checkInTextField.delegate = self
+        
         
         
         //Set up views if editing an existing guest.
@@ -56,6 +59,7 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
             constIdTextField.text = guest.constId
             numberTextField.text = guest.number
             BalanceDueTextField.text = guest.balanceDue
+            checkInTextField.text = guest.checkIn
             if(guest.number == "none"){
                 numberTextField.isHidden = true
             }else{
@@ -129,22 +133,13 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
         let guestOf = numberOfGuestTextField.text ?? ""
         let number = numberTextField.text ?? ""
         let balanceDue = BalanceDueTextField.text ?? ""
+        let checkIn = checkInTextField.text ?? ""
         
-        guest = Guest(constId: constId, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, guestOf: guestOf, number: number, balanceDue: balanceDue)
+        guest = Guest(constId: constId, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, guestOf: guestOf, number: number, balanceDue: balanceDue, checkIn: checkIn)
     }
-    
     
     //MARK: Private Methods
     private func updateSaveButtonState(){
-        //Disable the Save Button if the text field is empty.
-        /*let text = firstNameTextField.text ?? ""
-        if(text.isEmpty == true){
-            saveButton.isEnabled = false;
-        }else if(text.isEmpty == false){
-            saveButton.isEnabled = true;
-        }*/
-        /*let text2 = lastNameTextField.text ?? ""
-        saveButton.isEnabled = !text2.isEmpty*/
     }
 }
 
