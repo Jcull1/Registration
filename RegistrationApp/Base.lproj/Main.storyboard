@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xbJ-Wz-mG2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xbJ-Wz-mG2">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -428,7 +428,7 @@
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="T1Q-Pc-YrZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Register" id="x7J-qn-rgd">
+                        <barButtonItem key="rightBarButtonItem" title="Check-In" id="x7J-qn-rgd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="SegueToAllSetScene:" destination="ZMa-1o-LPD" id="hu9-4o-dm9"/>
@@ -522,7 +522,7 @@
                                     <constraint firstAttribute="height" constant="133" id="ElZ-7b-543"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="46"/>
-                                <state key="normal" title="Check In" backgroundImage="ButtonBackground">
+                                <state key="normal" title="Check-In" backgroundImage="ButtonBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -923,10 +923,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ButtonBackground" width="1782" height="522"/>
+        <image name="ButtonBackground" width="891" height="261"/>
         <image name="HorizonLogo" width="188" height="99"/>
-        <image name="Image" width="384" height="384"/>
-        <image name="SHU_Logo" width="1200" height="628"/>
+        <image name="Image" width="256" height="256"/>
+        <image name="SHU_Logo" width="600" height="314"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LH7-Cz-7c1"/>

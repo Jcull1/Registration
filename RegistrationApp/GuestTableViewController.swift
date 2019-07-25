@@ -132,7 +132,8 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             cell.balanceDueLabel.isHidden = false
         }
         if(cell.checkInLabel.text == "True"){
-            cell.isHidden = true;
+            
+            
         }
         return cell
     }
