@@ -23,9 +23,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6a-F1-KyR">
-                                    <rect key="frame" x="336" y="7" width="78" height="36"/>
+                                    <rect key="frame" x="336" y="7" width="81" height="36"/>
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                    <state key="normal" title="REGISTER"/>
+                                    <state key="normal" title="CHECK-IN"/>
                                     <connections>
                                         <action selector="RegisterMultipleGuests:" destination="UhF-mX-bZD" eventType="touchUpInside" id="1MS-4x-D4p"/>
                                     </connections>
