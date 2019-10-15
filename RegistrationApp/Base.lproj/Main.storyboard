@@ -412,6 +412,10 @@
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <viewLayoutGuide key="safeArea" id="xpV-wL-MPi"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlackArrow-1" translatesAutoresizingMaskIntoConstraints="NO" id="Axe-02-DLq">
+                                <rect key="frame" x="606" y="76" width="185" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.83921568627450982" green="0.81568627450980391" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -439,6 +443,7 @@
                     <connections>
                         <outlet property="BalanceDueTextField" destination="kFy-hI-fsT" id="C9V-ad-lmd"/>
                         <outlet property="GuestTitle" destination="r2X-oV-Oxf" id="aho-zG-Phb"/>
+                        <outlet property="blackArrow" destination="Axe-02-DLq" id="Gk1-e9-5fa"/>
                         <outlet property="cellPhoneTextField" destination="EbA-sk-7ts" id="pKg-Uy-ewZ"/>
                         <outlet property="checkInTextField" destination="bUg-Bm-9nw" id="lHA-n9-1ux"/>
                         <outlet property="constIdTextField" destination="XfI-gY-hvD" id="rlp-4o-2BN"/>
@@ -623,13 +628,13 @@
                                     <rect key="frame" x="425" y="11" width="290" height="64"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrived Guests:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHj-ir-NzH">
-                                            <rect key="frame" x="8" y="16" width="158" height="32"/>
+                                            <rect key="frame" x="8" y="16.5" width="158" height="31.5"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBd-ea-LbR">
-                                            <rect key="frame" x="187" y="16" width="34" height="32"/>
+                                            <rect key="frame" x="187" y="16.5" width="34" height="31.5"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -648,13 +653,13 @@
                                     <rect key="frame" x="81" y="11" width="277" height="64"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Guests:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yg-0r-Wyj">
-                                            <rect key="frame" x="8" y="17" width="133" height="32"/>
+                                            <rect key="frame" x="8" y="17" width="133" height="31.5"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSQ-Vd-Tkx">
-                                            <rect key="frame" x="174" y="17" width="32" height="32"/>
+                                            <rect key="frame" x="174" y="17" width="32" height="31.5"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -847,10 +852,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Arrived Guests" id="gcQ-y8-wu5">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="VGo-Fh-jId">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="VGo-Fh-jId">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="xbJ-Wz-mG2" kind="presentation" id="B11-eI-qkZ"/>
+                                <action selector="goHome:" destination="FfH-QZ-ruj" id="Tia-az-rvl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -923,6 +928,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BlackArrow-1" width="1024" height="1145"/>
         <image name="ButtonBackground" width="891" height="261"/>
         <image name="HorizonLogo" width="188" height="99"/>
         <image name="Image" width="256" height="256"/>

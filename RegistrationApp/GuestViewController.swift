@@ -21,6 +21,7 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cellPhoneTextField: UITextField!
     @IBOutlet weak var numberOfGuestTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var blackArrow: UIImageView!
     @IBOutlet weak var GuestTitle: UILabel!
     @IBOutlet weak var checkInTextField: UITextField!
     
@@ -81,8 +82,10 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
         
         if !text.isEmpty{
             saveButton.isEnabled = true
+            blackArrow.isHidden = false
         } else {
             saveButton.isEnabled = false
+                blackArrow.isHidden = true
         }
         
         return true
@@ -90,6 +93,7 @@ class GuestViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
         saveButton.isEnabled = false
+            blackArrow.isHidden = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

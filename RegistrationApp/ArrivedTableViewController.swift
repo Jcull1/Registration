@@ -29,6 +29,10 @@ class ArrivedTableViewController: UITableViewController, MFMailComposeViewContro
         }
     }
     
+    @IBAction func goHome(_ sender: Any) {
+         dismiss(animated: true, completion: nil)
+    }
+
     //When ArrivedTableViewController is loaded, this initializes it's componenets.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,7 @@ class ArrivedTableViewController: UITableViewController, MFMailComposeViewContro
         ArrivedCounter.text = String(arrivedGuests.count)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(export))
         logoSwitcher.isOn = switchState
-        
+        arrivedGuests.sort(by: {$0.lastName < $1.lastName})
     }
 
     //This function deals with exporting a arrived guest list as a cvs file.

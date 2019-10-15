@@ -31,6 +31,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var noResultCell: UIView!
     //MARK: Properties
     
     var arrayNum = 0
@@ -42,8 +43,11 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         navigationItem.titleView = searchBar
         setUpSearchBar()
         tableView.tableFooterView = UIView(frame: .zero)
+        
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -88,6 +92,11 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
         return true
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (currentGuestArray.count ==  0) {
+            self.tableView.setEmptyMessage("No Results - Please Search by Last Name.")
+        }else{
+            self.tableView.restore()
+        }
             return currentGuestArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,8 +141,7 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
             cell.balanceDueLabel.isHidden = false
         }
         if(cell.checkInLabel.text == "True"){
-            
-            
+            cell.SidePanel.backgroundColor = #colorLiteral(red: 0.6652007103, green: 0.6813325882, blue: 0.3241004944, alpha: 1)
         }
         return cell
     }
@@ -211,7 +219,8 @@ class GuestTableViewController: UITableViewController , UISearchBarDelegate {
                 os_log("Added selected guest to arrived guests array", log: OSLog.default, type: .debug)
                 dump(arrivedGuests)
                 currentGuestArray = updatedArray
-                tableView.reloadData()
+                searchBar.text = ""
+                //tableView.reloadData()
             }else{
             //Add a new guest
             /*let newIndexPath = IndexPath(row: guests.count, section: 0)
@@ -262,5 +271,26 @@ extension UIView {
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         self.layer.mask = mask
+    }
+}
+
+extension UITableView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "Avenir", size: 23)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+        self.separatorStyle = .none;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }
